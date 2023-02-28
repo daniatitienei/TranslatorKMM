@@ -8,4 +8,4 @@ captures
 .cxx
 local.properties
 xcuserdata
-shared/src/commonMain/kotlin/com/atitienei_daniel/translatorkmm/NetworkConstants
+shared/src/commonMain/kotlin/com/atitienei_daniel/translatorkmm/NetworkConstants.kt
