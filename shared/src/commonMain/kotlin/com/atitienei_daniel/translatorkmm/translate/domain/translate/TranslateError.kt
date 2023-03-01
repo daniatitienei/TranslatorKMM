@@ -1,4 +1,4 @@
-package com.atitienei_daniel.translatorkmm.translation.domain.translate
+package com.atitienei_daniel.translatorkmm.translate.domain.translate
 
 enum class TranslateError {
     ServiceUnavailable,
