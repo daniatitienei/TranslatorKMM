@@ -10,7 +10,7 @@ kotlin {
     android {
         compilations.all {
             kotlinOptions {
-                jvmTarget = "1.8"
+                jvmTarget = Build.jvmVersion
             }
         }
     }
@@ -86,5 +86,12 @@ android {
     defaultConfig {
         minSdk = 29
         targetSdk = 33
+    }
+}
+
+sqldelight {
+    database("TranslateDatabase") {
+        packageName = "com.atitienei_daniel.translatorkmm.database"
+        sourceFolders = listOf("sqldelight")
     }
 }
