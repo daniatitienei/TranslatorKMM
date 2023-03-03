@@ -1,3 +1,3 @@
 object Build {
-    const val jvmVersion = "17"
+    const val jvmVersion = "11"
 }
