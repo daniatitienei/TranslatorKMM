@@ -2,6 +2,7 @@
 
 package com.atitienei_daniel.translatorkmm.android.translate.presentation
 
+import android.speech.tts.TextToSpeech
 import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
@@ -25,8 +26,10 @@ import com.atitienei_daniel.translatorkmm.android.R
 import com.atitienei_daniel.translatorkmm.android.translate.presentation.components.LanguageDropDown
 import com.atitienei_daniel.translatorkmm.android.translate.presentation.components.SwapLanguagesButton
 import com.atitienei_daniel.translatorkmm.android.translate.presentation.components.TranslateTextField
+import com.atitienei_daniel.translatorkmm.android.translate.presentation.components.rememberTextToSpeech
 import com.atitienei_daniel.translatorkmm.translate.presentation.TranslateEvent
 import com.atitienei_daniel.translatorkmm.translate.presentation.TranslateState
+import java.util.Locale
 
 @Composable
 fun TranslateScreen(
@@ -90,6 +93,7 @@ fun TranslateScreen(
             item {
                 val clipboardManager = LocalClipboardManager.current
                 val keyboardController = LocalSoftwareKeyboardController.current
+                val textToSpeech = rememberTextToSpeech()
 
                 TranslateTextField(
                     fromText = state.fromText,
@@ -118,7 +122,13 @@ fun TranslateScreen(
                         ).show()
                     },
                     onSpeakerClick = {
-                        // TODO
+                        textToSpeech.language = state.toLanguage.toLocale() ?: Locale.ENGLISH
+                        textToSpeech.speak(
+                            state.toText,
+                            TextToSpeech.QUEUE_FLUSH,
+                            null,
+                            null
+                        )
                     },
                     onCloseClick = {
                         onEvent(TranslateEvent.CloseTranslation)
