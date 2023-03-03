@@ -14,7 +14,11 @@ import androidx.compose.material.DropdownMenu
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.ExposedDropdownMenuBox
 import androidx.compose.material.ExposedDropdownMenuDefaults
+import androidx.compose.material.Icon
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.ArrowDropDown
+import androidx.compose.material.icons.rounded.ArrowDropUp
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -56,7 +60,10 @@ fun LanguageDropDown(
             )
             Spacer(modifier = Modifier.width(16.dp))
             Text(text = language.language.langName, color = LightBlue)
-            ExposedDropdownMenuDefaults.TrailingIcon(expanded = isOpen)
+            Icon(
+                imageVector = if (isOpen) Icons.Rounded.ArrowDropUp else Icons.Rounded.ArrowDropDown,
+                contentDescription = null
+            )
         }
     }
 }
