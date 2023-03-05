@@ -28,7 +28,7 @@ struct TranslateTextField: View {
             .gradientSurface()
             .cornerRadius(15)
             .animation(.easeInOut, value: isTranslating)
-            .shadow(radius: 4)
+            .shadow(radius: 2)
         } else {
             TranslatedTextField(
                 fromText: fromText,
@@ -41,7 +41,7 @@ struct TranslateTextField: View {
             .gradientSurface()
             .cornerRadius(15)
             .animation(.easeInOut, value: isTranslating)
-            .shadow(radius: 4)
+            .shadow(radius: 2)
             .onTapGesture {
                 onTranslateEvent(TranslateEvent.EditTranslation())
             }
