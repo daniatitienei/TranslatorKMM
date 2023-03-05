@@ -22,6 +22,7 @@
 		845D7A8E29B5128D00122F67 /* LanguageDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D7A8D29B5128D00122F67 /* LanguageDisplay.swift */; };
 		845D7A9029B512D900122F67 /* ProgressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D7A8F29B512D900122F67 /* ProgressButton.swift */; };
 		845D7A9229B513DD00122F67 /* TranslateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D7A9129B513DD00122F67 /* TranslateTextField.swift */; };
+		845D7A9429B51ABE00122F67 /* TextToSpeech.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D7A9329B51ABE00122F67 /* TextToSpeech.swift */; };
 		94E786B0F4F188E5AE75D9EF /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C2B3E41F7EA9BBFD8C3B6C /* Pods_iosApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,7 @@
 		845D7A8D29B5128D00122F67 /* LanguageDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageDisplay.swift; sourceTree = "<group>"; };
 		845D7A8F29B512D900122F67 /* ProgressButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressButton.swift; sourceTree = "<group>"; };
 		845D7A9129B513DD00122F67 /* TranslateTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateTextField.swift; sourceTree = "<group>"; };
+		845D7A9329B51ABE00122F67 /* TextToSpeech.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeech.swift; sourceTree = "<group>"; };
 		A8C2B3E41F7EA9BBFD8C3B6C /* Pods_iosApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F15D2759336492B64275AC38 /* Pods-iosApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.release.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,6 +125,7 @@
 				8410BCA829B3880200147B8E /* components */,
 				8410BCB229B3BD1D00147B8E /* IOSTranslateViewModel.swift */,
 				8410BCB429B3BD2D00147B8E /* TranslateScreen.swift */,
+				845D7A9329B51ABE00122F67 /* TextToSpeech.swift */,
 			);
 			path = presentation;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				8410BCB129B3BA0000147B8E /* SwapLanguageButton.swift in Sources */,
 				84595DBB29B35C5800D9F575 /* Colors.swift in Sources */,
 				8410BCB529B3BD2D00147B8E /* TranslateScreen.swift in Sources */,
+				845D7A9429B51ABE00122F67 /* TextToSpeech.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
 				845D7A9229B513DD00122F67 /* TranslateTextField.swift in Sources */,
 			);
