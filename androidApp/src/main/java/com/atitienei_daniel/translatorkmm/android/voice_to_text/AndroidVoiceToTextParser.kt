@@ -6,9 +6,11 @@ import android.os.Bundle
 import android.speech.RecognitionListener
 import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
+import android.speech.SpeechRecognizer.ERROR_CLIENT
 import com.atitienei_daniel.translatorkmm.android.R
 import com.atitienei_daniel.translatorkmm.core.domain.util.CommonStateFlow
 import com.atitienei_daniel.translatorkmm.core.domain.util.toCommonStateFlow
+import com.atitienei_daniel.translatorkmm.translate.domain.translate.TranslateError
 import com.atitienei_daniel.translatorkmm.voice_to_text.domain.VoiceToTextParser
 import com.atitienei_daniel.translatorkmm.voice_to_text.domain.VoiceToTextParserState
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -100,6 +102,9 @@ class AndroidVoiceToTextParser(
     }
 
     override fun onError(error: Int) {
+        if (error == ERROR_CLIENT) {
+            return
+        }
         _state.update {
             it.copy(
                 error = "Error: $error"
