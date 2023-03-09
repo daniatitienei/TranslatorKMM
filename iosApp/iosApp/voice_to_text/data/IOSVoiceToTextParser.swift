@@ -1,29 +1,16 @@
-//
-//  IOSVoiceToTextParser.swift
-//  iosApp
-//
-//  Created by Atitienei Daniel on 08.03.2023.
-//  Copyright © 2023 orgName. All rights reserved.
-//
-
 import Foundation
 import shared
-import Combine
 import Speech
+import Combine
 
 class IOSVoiceToTextParser: VoiceToTextParser, ObservableObject {
     
     private let _state = IOSMutableStateFlow(
-        initialValue: VoiceToTextParserState(
-            result: "",
-            error: nil,
-            powerRatio: 0.0,
-            isSpeaking: false
-        )
+        initialValue: VoiceToTextParserState(result: "", error: nil, powerRatio: 0.0, isSpeaking: false)
     )
     var state: CommonStateFlow<VoiceToTextParserState> { _state }
     
-    var micObserver = MicrophonePowerObserver()
+    private var micObserver = MicrophonePowerObserver()
     var micPowerRatio: Published<Double>.Publisher { micObserver.$micPowerRatio }
     private var micPowerCancellable: AnyCancellable?
     
@@ -40,12 +27,7 @@ class IOSVoiceToTextParser: VoiceToTextParser, ObservableObject {
     
     func reset() {
         self.stopListening()
-        _state.value = VoiceToTextParserState(
-            result: "",
-            error: nil,
-            powerRatio: 0.0,
-            isSpeaking: false
-        )
+        _state.value = VoiceToTextParserState(result: "", error: nil, powerRatio: 0.0, isSpeaking: false)
     }
     
     func startListening(languageCode: String) {
@@ -70,7 +52,6 @@ class IOSVoiceToTextParser: VoiceToTextParser, ObservableObject {
             }
             
             self?.recognitionTask = self?.recognizer?.recognitionTask(with: audioBufferRequest) { [weak self] (result, error) in
-                
                 guard let result = result else {
                     self?.updateState(error: error?.localizedDescription)
                     return
@@ -121,7 +102,6 @@ class IOSVoiceToTextParser: VoiceToTextParser, ObservableObject {
         audioBufferRequest = nil
         
         audioEngine?.stop()
-        audioEngine = nil
         
         inputNode?.removeTap(onBus: 0)
         
@@ -129,28 +109,23 @@ class IOSVoiceToTextParser: VoiceToTextParser, ObservableObject {
         audioSession = nil
     }
     
-    private func requestPermissions(onGranted: @escaping() -> Void) {
+    private func requestPermissions(onGranted: @escaping () -> Void) {
         audioSession?.requestRecordPermission { [weak self] wasGranted in
             if !wasGranted {
-                self?.updateState(
-                    error: "You need to grant permissions to record your voice."
-                )
+                self?.updateState(error: "You need to grant permission to record your voice.")
                 self?.stopListening()
                 return
             }
             SFSpeechRecognizer.requestAuthorization { [weak self] status in
                 DispatchQueue.main.async {
                     if status != .authorized {
-                        self?.updateState(
-                            error: "You need to grant permissions to transcribe audio."
-                        )
+                        self?.updateState(error: "You need to grant permission to transcribe audio.")
                         self?.stopListening()
                         return
                     }
                     onGranted()
                 }
             }
-            
         }
     }
     
@@ -163,4 +138,5 @@ class IOSVoiceToTextParser: VoiceToTextParser, ObservableObject {
             isSpeaking: isSpeaking ?? currentState?.isSpeaking ?? false
         )
     }
+    
 }
