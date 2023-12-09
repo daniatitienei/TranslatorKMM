@@ -1,6 +1,5 @@
 package com.atitienei_daniel.translatorkmm.translate.data.translate
 
-import com.atitienei_daniel.translatorkmm.NetworkConstants
 import com.atitienei_daniel.translatorkmm.core.domain.language.Language
 import com.atitienei_daniel.translatorkmm.translate.domain.translate.TranslateClient
 import com.atitienei_daniel.translatorkmm.translate.domain.translate.TranslateError
@@ -25,7 +24,7 @@ class KtorTranslateClient(
     ): String {
         val result = try {
             httpClient.post {
-                url(NetworkConstants.baseUrl + "/translate")
+                url("YOUR_URL" + "/translate")
                 contentType(ContentType.Application.Json)
                 setBody(
                     TranslateDto(
